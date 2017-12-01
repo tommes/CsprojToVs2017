@@ -13,10 +13,10 @@ namespace Project2015To2017
 	{
 		public Task TransformAsync(XDocument projectFile, DirectoryInfo projectFolder, Project definition)
 		{
-			if (definition.PackageReferences.Count == 0)
+			if (definition.PackageReferences == null || definition.PackageReferences.Count == 0)
 			{
 				return Task.CompletedTask;
-			}
+            }
 
 			var packageReferenceIds = definition.PackageReferences.Select(x => x.Id).ToArray();
 			definition.AssemblyReferences.RemoveAll(x => 
